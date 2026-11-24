@@ -37,6 +37,7 @@
     })();
   </script>
 
+  <link rel="preload" as="image" href="assets/images/logo-key.webp" fetchpriority="high">
   <link rel="preload" as="image" href="assets/images/master-bedroom.webp" imagesrcset="assets/images/master-bedroom-560.webp 560w, assets/images/master-bedroom.webp 768w" imagesizes="(max-width: 900px) 100vw, 58vw" fetchpriority="high">
 
   <!-- Google Fonts Preconnect & Stylesheets -->
@@ -64,14 +65,10 @@
     <div class="loader-door loader-door-r" aria-hidden="true"><span class="panel"></span><span class="panel"></span></div>
     <div class="loader-center" aria-hidden="true">
       <p class="loader-name">Arora Residences</p>
-      <svg class="loader-key" viewBox="0 0 320 72">
-        <defs>
-          <linearGradient id="keyGold" x1="0" x2="1"><stop offset="0" stop-color="#cf9128"/><stop offset=".5" stop-color="#fbe2a0"/><stop offset="1" stop-color="#d89a2c"/></linearGradient>
-          <g id="keyShape"><path fill-rule="evenodd" d="M36 2c8-4 18 2 21 10 5 2 11 12 11 24s-6 22-11 24c-3 8-13 14-21 10-8 4-18-2-21-10C10 58 4 48 4 36s6-22 11-24C18 4 28-2 36 2Zm0 9a10.500 10.500 0 1 0 0 21 10.500 10.500 0 0 0 0-21Zm0 29a10.500 10.500 0 1 0 0 21 10.500 10.500 0 0 0 0-21Z"/><path d="M66 32h194v8H66Z"/><g transform="translate(256)"><path d="M0 32h58a4 4 0 0 1 0 8H50v6h8v20h-9v-9h-9v9h-9V46h8v-6h-9v6H21v12h-9V40H0Z"/></g></g>
-        </defs>
-        <use href="#keyShape" class="loader-key-off"/>
-        <use href="#keyShape" class="loader-key-on"/>
-      </svg>
+      <div class="loader-key">
+        <img class="loader-key-off" src="assets/images/logo-key.webp" alt="" width="720" height="197">
+        <img class="loader-key-on" src="assets/images/logo-key.webp" alt="" width="720" height="197">
+      </div>
       <p class="loader-tag">Keys to your Luxurious Lifestyle</p>
     </div>
   </div>
@@ -81,12 +78,9 @@
        ======================================================================== -->
   <header class="site-header" id="siteHeader">
     <div class="container nav-container">
-      <a href="#home" class="brand-logo" aria-label="Arora Residences Home">
-        <span class="brand-title">Arora Residences</span>
-        <svg class="brand-bow" viewBox="4 0 64 72" aria-hidden="true"><path fill-rule="evenodd" d="M36 2c8-4 18 2 21 10 5 2 11 12 11 24s-6 22-11 24c-3 8-13 14-21 10-8 4-18-2-21-10C10 58 4 48 4 36s6-22 11-24C18 4 28-2 36 2Zm0 9a10.500 10.500 0 1 0 0 21 10.500 10.500 0 0 0 0-21Zm0 29a10.500 10.500 0 1 0 0 21 10.500 10.500 0 0 0 0-21Z"/></svg>
-        <span class="brand-shaft" aria-hidden="true"></span>
-        <svg class="brand-bit" viewBox="0 0 46 32" aria-hidden="true"><path d="M0 0h8v17H0ZM22 0h11v8h8v23h-9V21h-9v10h-9V8h8Z"/></svg>
-        <span class="brand-subtitle">Real Estate &bull; Interiors &bull; Vastu</span>
+      <a href="#home" class="brand-logo" aria-label="Arora Residences, Keys to your Luxurious Lifestyle. Home">
+        <img src="assets/images/logo-key.webp" alt="" width="720" height="197">
+        <img class="brand-words" src="assets/images/logo-text.webp" alt="" width="720" height="197">
       </a>
 
       <nav class="nav-desktop" aria-label="Main Navigation">
@@ -615,9 +609,9 @@
 
         <div class="process" id="processKey">
           <div class="key-rail" aria-hidden="true">
-            <svg class="key-bow" viewBox="0 0 72 72"><path fill-rule="evenodd" d="M36 2c8-4 18 2 21 10 5 2 11 12 11 24s-6 22-11 24c-3 8-13 14-21 10-8 4-18-2-21-10C10 58 4 48 4 36s6-22 11-24C18 4 28-2 36 2Zm0 9a10.500 10.500 0 1 0 0 21 10.500 10.500 0 0 0 0-21Zm0 29a10.500 10.500 0 1 0 0 21 10.500 10.500 0 0 0 0-21Z"/></svg>
+            <svg class="key-bow" viewBox="-16 67 372 372"><path fill-rule="evenodd" d="M174.5 66.5 180.7 66.3 187.0 67.0 192.5 68.5 196.1 69.9 200.6 72.4 204.5 75.5 206.9 78.1 209.9 82.7 211.4 83.6 212.9 83.2 217.7 77.7 222.1 74.1 225.7 71.7 233.5 68.5 239.3 67.3 243.9 67.1 254.4 68.6 266.9 73.1 275.5 77.5 285.8 84.2 297.3 93.7 306.5 102.5 321.0 119.0 330.4 132.6 336.1 142.9 343.8 159.2 349.3 175.7 352.7 191.3 354.4 202.6 355.9 221.8 355.9 277.9 353.7 288.3 351.0 305.0 347.2 320.2 341.6 335.6 334.0 353.0 327.5 364.5 315.7 381.7 305.3 394.3 294.3 405.3 282.8 414.8 267.2 425.2 251.9 432.9 244.5 435.5 238.9 436.9 233.6 437.6 228.5 437.5 223.5 436.5 218.5 434.5 214.1 431.9 209.3 427.7 204.3 419.7 202.5 418.3 200.6 419.0 197.1 424.1 191.1 430.1 184.1 434.1 180.2 435.2 173.0 436.0 163.9 435.1 156.3 432.7 146.7 428.3 136.5 422.5 125.3 414.7 110.7 402.3 103.8 395.2 91.0 380.0 78.6 362.4 67.9 343.1 60.2 326.8 53.7 309.3 49.1 291.9 47.5 281.5 47.0 275.0 47.9 264.9 50.1 258.1 51.4 255.4 55.3 250.3 59.1 246.8 59.6 245.3 59.0 243.6 55.3 239.7 53.3 236.7 50.7 230.3 49.9 227.1 49.1 219.9 50.2 208.2 53.6 193.6 58.3 180.3 66.0 163.0 70.8 153.8 78.6 140.6 94.0 119.0 102.7 108.7 111.7 99.7 117.1 95.1 127.1 87.1 132.5 83.5 148.0 75.0 164.7 68.7ZM197.5 124.5 188.5 126.5 181.2 129.2 174.6 132.6 166.7 138.7 160.9 144.9 154.7 154.7 151.4 162.4 149.5 171.5 149.0 178.0 149.4 184.6 151.4 193.6 156.7 205.3 159.9 210.1 162.6 213.4 169.9 220.1 174.5 223.5 181.3 226.7 186.5 228.5 196.5 230.5 201.1 230.9 207.5 230.5 217.5 228.5 225.3 225.3 235.9 218.9 241.3 214.3 244.1 211.1 250.5 201.5 254.4 192.4 256.6 182.6 257.0 173.0 256.5 166.5 253.9 156.1 249.5 147.5 244.3 140.7 235.7 133.3 226.9 128.1 217.1 124.9 209.0 124.0ZM198.4 264.4 187.7 266.7 177.7 270.7 168.1 277.1 163.3 281.3 160.0 285.0 155.5 291.5 152.3 298.3 150.5 303.5 148.5 313.5 148.5 321.5 150.5 332.5 152.1 336.9 154.7 342.3 160.9 352.1 163.3 354.7 168.1 358.9 175.7 364.3 185.4 368.6 194.5 370.5 201.0 371.0 209.6 370.6 219.9 367.9 230.5 362.5 237.3 357.3 242.3 352.3 245.9 347.9 250.9 338.9 254.1 329.1 255.0 321.0 254.6 309.4 252.5 300.5 248.5 291.5 243.5 284.5 239.3 279.7 235.0 276.0 228.5 271.5 221.7 268.3 216.5 266.5 206.6 264.4Z"/></svg>
             <span class="key-shaft"><span class="key-fill"></span></span>
-            <svg class="key-bit" viewBox="0 0 64 72"><path d="M0 32h58a4 4 0 0 1 0 8H50v6h8v20h-9v-9h-9v9h-9V46h8v-6h-9v6H21v12h-9V40H0Z"/></svg>
+            <svg class="key-bit" viewBox="1230 90 326 326"><path d="M1230 222 1520 222 1543 230 1552 241 1554 249 1553 261 1547 272 1522 283 1455 283 1455 330 1436 329 1436 342 1465 342 1464 298 1509 298 1509 371 1441 371 1441 392 1509 392 1509 472 1463 472 1464 422 1378 422 1378 472 1330 472 1330 392 1401 392 1401 371 1330 371 1330 298 1374 297 1374 342 1404 342 1405 329 1384 329 1384 284 1230 284Z"/></svg>
           </div>
           <ol class="process-steps">
             <li class="process-step">
@@ -784,12 +778,9 @@
       <div class="footer-top">
         <!-- Col 1: Brand Info -->
         <div class="footer-brand">
-          <a href="#home" class="brand-logo" aria-label="Arora Residences Home">
-        <span class="brand-title">Arora Residences</span>
-        <svg class="brand-bow" viewBox="4 0 64 72" aria-hidden="true"><path fill-rule="evenodd" d="M36 2c8-4 18 2 21 10 5 2 11 12 11 24s-6 22-11 24c-3 8-13 14-21 10-8 4-18-2-21-10C10 58 4 48 4 36s6-22 11-24C18 4 28-2 36 2Zm0 9a10.500 10.500 0 1 0 0 21 10.500 10.500 0 0 0 0-21Zm0 29a10.500 10.500 0 1 0 0 21 10.500 10.500 0 0 0 0-21Z"/></svg>
-        <span class="brand-shaft" aria-hidden="true"></span>
-        <svg class="brand-bit" viewBox="0 0 46 32" aria-hidden="true"><path d="M0 0h8v17H0ZM22 0h11v8h8v23h-9V21h-9v10h-9V8h8Z"/></svg>
-        <span class="brand-subtitle">Real Estate &bull; Interiors &bull; Vastu</span>
+          <a href="#home" class="brand-logo" aria-label="Arora Residences, Keys to your Luxurious Lifestyle. Home">
+        <img src="assets/images/logo-key.webp" alt="" width="720" height="197" loading="lazy">
+        <img class="brand-words" src="assets/images/logo-text.webp" alt="" width="720" height="197" loading="lazy">
       </a>
           <p class="footer-brand-desc">
             Bespoke interior design, architectural mastery, and sacred Vastu Shastra consultation. Unlocking keys to your luxurious lifestyle.

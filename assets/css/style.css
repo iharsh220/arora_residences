@@ -21,7 +21,7 @@
   --step-title: clamp(2rem, 1.4rem + 2.5vw, 3.3rem);
   --step-lead: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
 
-  --header-h: 80px;
+  --header-h: 86px;
   --gutter: clamp(1.15rem, 4vw, 2.5rem);
   --section-y: clamp(4.5rem, 9vw, 8rem);
   --radius: 4px;
@@ -48,7 +48,6 @@
   --btn-text: #fdf3d6;
   --header-bg: rgba(245, 248, 245, 0.88);
   --glow: rgba(18, 122, 78, 0.12);
-  --brass: #a87417;
   --key-off: #e3dabb;
   --shadow: 0 24px 60px -24px rgba(8, 50, 32, 0.35);
 }
@@ -72,7 +71,6 @@
   --btn-text: #1d1503;
   --header-bg: rgba(4, 19, 12, 0.85);
   --glow: rgba(24, 140, 88, 0.2);
-  --brass: #e9b650;
   --key-off: #3a3c1c;
   --shadow: 0 30px 70px -24px rgba(0, 0, 0, 0.8);
 }
@@ -207,18 +205,10 @@ h1 em, h2 em {
 
 .nav-container { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
 
-/* Logo lockup: the key, with live text above and below its shaft */
-.brand-logo {
-  --k: 1; flex: none;
-  display: inline-grid; align-items: end; justify-content: start; line-height: 1;
-  grid-template: minmax(0, 1fr) calc(3px * var(--k)) minmax(0, 1fr) / calc(44px * var(--k)) auto calc(32px * var(--k));
-  height: calc(50px * var(--k));
-}
-.brand-bow { grid-area: 1 / 1 / -1 / 2; align-self: center; height: calc(48px * var(--k)); fill: var(--brass); }
-.brand-shaft { grid-area: 2 / 1 / 3 / -1; align-self: stretch; margin-left: calc(38px * var(--k)); background: var(--brass); border-radius: 0 2px 2px 0; }
-.brand-bit { grid-area: 3 / 3; align-self: start; justify-self: end; width: calc(27px * var(--k)); margin-right: calc(1px * var(--k)); fill: var(--brass); }
-.brand-title { grid-area: 1 / 2 / 2 / -1; padding: 0 calc(3px * var(--k)) calc(4px * var(--k)) calc(6px * var(--k)); font-family: var(--font-display); font-style: italic; font-weight: 600; font-size: calc(23px * var(--k)); white-space: nowrap; }
-.brand-subtitle { grid-area: 3 / 2; align-self: start; padding: calc(6px * var(--k)) calc(8px * var(--k)) 0 calc(6px * var(--k)); font-size: calc(11.5px * var(--k)); color: var(--gold); white-space: nowrap; }
+/* The logo in two layers, so the lettering can deepen on light backgrounds */
+.brand-logo { --w: 232px; position: relative; flex: none; display: block; width: var(--w); aspect-ratio: 720 / 197; }
+.brand-logo img { position: absolute; inset: 0; width: 100%; height: 100%; }
+[data-theme="light"] .site-header.scrolled .brand-words, [data-theme="light"] .site-header.menu-open .brand-words { filter: brightness(0.5) saturate(1.15); }
 
 .nav-desktop { display: flex; align-items: center; gap: clamp(1rem, 1.7vw, 1.8rem); }
 .nav-link { position: relative; padding: 0.5rem 0; font-size: 0.9375rem; font-weight: 500; color: var(--text-2); transition: color 0.2s; }
@@ -286,14 +276,11 @@ h1 em, h2 em {
 @media (min-width: 1181px) { .mobile-menu { display: none; } }
 @media (max-width: 700px) {
   :root { --header-h: 68px; }
-  .brand-logo { --k: 0.88; }
+  .brand-logo { --w: clamp(136px, calc(100vw - 150px), 204px); }
   .nav-container { gap: 0.4rem; }
   .nav-actions { gap: 0.4rem; }
   .icon-btn { width: 44px; height: 44px; }
 }
-@media (max-width: 379px) { .site-header .brand-logo { --k: 0.8; } }
-@media (max-width: 339px) { .site-header .brand-logo { --k: 0.72; } }
-@media (max-width: 309px) { .site-header .brand-logo { --k: 0.54; } }
 
 /* 5. Hero ------------------------------------------------------------------ */
 /* The photo is dark, so the hero keeps light ink and brass in both themes */
@@ -307,7 +294,7 @@ h1 em, h2 em {
   margin-top: calc(-1 * var(--header-h)); padding-top: var(--header-h);
   color: var(--text); background: #04130c;
 }
-.site-header:not(.scrolled):not(.menu-open) { --brass: #e9b650; --text: #f6f4ea; --text-2: #dfe8e2; --gold: #f0c96f; --gold-line: rgba(240, 201, 111, 0.6); --line: rgba(255, 255, 255, 0.3); }
+.site-header:not(.scrolled):not(.menu-open) { --text: #f6f4ea; --text-2: #dfe8e2; --gold: #f0c96f; --gold-line: rgba(240, 201, 111, 0.6); --line: rgba(255, 255, 255, 0.3); }
 
 .hero-photo, .hero-scene { position: absolute; inset: 0; }
 .hero-scene img { position: absolute; top: 0; right: 0; width: 58%; height: 100%; object-fit: cover; object-position: 50% 40%; }
@@ -520,24 +507,25 @@ button.zone[aria-pressed="true"] { background: linear-gradient(135deg, #d79a2e, 
 
 /* 11. Process: the key ----------------------------------------------------- */
 .process-section { background: var(--bg-alt); border-block: 1px solid var(--line); }
-.process { --p: 1; --key: #d9a136; }
-.key-rail { display: flex; align-items: center; margin-bottom: 2rem; }
-.key-bow { flex: none; width: 84px; fill: var(--key); }
-.key-bit { flex: none; width: 75px; fill: var(--key-off); margin-left: -1px; transition: fill 0.5s; }
+/* Bow and bit are traced from the logo; 1 unit of the artwork = --u */
+.process { --p: 1; --key: #e0a32e; --u: 0.22px; }
+.key-rail { display: flex; align-items: center; margin-bottom: 2.25rem; padding-bottom: calc(60 * var(--u)); }
+.key-bow { flex: none; width: calc(372 * var(--u)); margin-left: calc(-62 * var(--u)); fill: var(--key); }
+.key-bit { flex: none; width: calc(326 * var(--u)); margin-left: -1px; fill: var(--key-off); transition: fill 0.5s; overflow: visible; }
 .process.unlocked .key-bit { fill: var(--key); }
-.key-shaft { flex: 1; height: 9.4px; margin-left: -4px; position: relative; background: var(--key-off); }
+.key-shaft { flex: 1; height: calc(62 * var(--u)); margin-left: calc(-6 * var(--u)); position: relative; background: var(--key-off); }
 .key-fill { position: absolute; inset: 0; background: var(--key); transform-origin: 0 0; transform: scaleX(var(--p)); }
 .process-steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(1.25rem, 2.5vw, 2.5rem); }
 .process-num { display: block; font-family: var(--font-display); font-style: italic; font-size: 2.25rem; line-height: 1; color: var(--gold); }
 .process-title { font-size: clamp(1.3rem, 1.1rem + 0.6vw, 1.6rem); margin-top: 0.8rem; }
 .process-desc { margin-top: 0.65rem; font-size: 0.9688rem; color: var(--text-2); }
 @media (max-width: 900px) {
-  .process { display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 1.4rem; }
-  .key-rail { flex-direction: column; margin: 0; }
-  .key-bow { width: 52px; }
-  .key-shaft { width: 5.8px; height: auto; margin: -3px 0 0; }
+  .process { --u: 0.15px; display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 1.4rem; }
+  .key-rail { flex-direction: column; margin: 0; padding: 0; }
+  .key-bow { margin: 0; transform: translateX(calc(-32 * var(--u))); }
+  .key-shaft { width: calc(62 * var(--u)); height: auto; margin: calc(-40 * var(--u)) 0 0; }
   .key-fill { transform: scaleY(var(--p)); }
-  .key-bit { width: 46.2px; height: 52px; transform: rotate(90deg); margin: -4px 0 0; }
+  .key-bit { margin: -1px 0 0; transform: rotate(90deg); }
   .process-steps { grid-template-columns: minmax(0, 1fr); gap: 2.5rem; padding-block: 0.5rem 0.75rem; }
   .process-num { font-size: 1.75rem; }
   .process-title { margin-top: 0.35rem; }
@@ -588,7 +576,7 @@ textarea.form-control { resize: vertical; min-height: 110px; }
 /* 13. Footer --------------------------------------------------------------- */
 .site-footer { background: #020d08; color: var(--text-2); border-top: 1px solid var(--line); padding-block: clamp(3rem, 6vw, 5rem) 1.75rem; }
 .footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.3fr; gap: clamp(2rem, 4vw, 4rem); padding-bottom: clamp(2.25rem, 4vw, 3.5rem); }
-.footer-brand .brand-logo { --k: 1.1; }
+.footer-brand .brand-logo { --w: min(270px, 100%); }
 .footer-brand .brand-title { color: var(--text); }
 .footer-brand-desc { margin-top: 1.25rem; font-size: 0.9375rem; max-width: 38ch; }
 .footer-heading { font-size: 1.2rem; color: var(--gold); margin-bottom: 0.7rem; }
@@ -674,9 +662,10 @@ html.loading { overflow: hidden; }
 }
 .loader-name { font-family: var(--font-display); font-style: italic; font-weight: 600; font-size: clamp(1.7rem, 1.2rem + 2.2vw, 2.7rem); line-height: 1.1; color: #f8efd6; }
 .loader-tag { font-family: var(--font-display); font-style: italic; font-size: clamp(1rem, 0.95rem + 0.3vw, 1.15rem); }
-.loader-key { width: min(62vw, 340px); overflow: visible; transition: transform 0.6s cubic-bezier(0.6, 0, 0.25, 1), opacity 0.3s; }
-.loader-key-off { fill: #f0cb78; opacity: 0.22; }
-.loader-key-on { fill: url(#keyGold); clip-path: inset(0 calc(100% - var(--p) * 100%) 0 0); transition: clip-path 0.45s var(--ease); }
+.loader-key { position: relative; width: min(64vw, 360px); aspect-ratio: 720 / 197; transition: transform 0.6s cubic-bezier(0.6, 0, 0.25, 1), opacity 0.3s; }
+.loader-key img { position: absolute; inset: 0; width: 100%; height: 100%; }
+.loader-key-off { opacity: 0.18; filter: grayscale(0.5); }
+.loader-key-on { clip-path: inset(0 calc(100% - var(--p) * 100%) 0 0); transition: clip-path 0.45s var(--ease); }
 .loader-name, .loader-tag { transition: opacity 0.35s; }
 
 /* Loaded: key turns in the lock, then the doors swing */
