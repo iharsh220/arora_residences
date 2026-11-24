@@ -48,6 +48,8 @@
   --btn-text: #fdf3d6;
   --header-bg: rgba(245, 248, 245, 0.88);
   --glow: rgba(18, 122, 78, 0.12);
+  --key: #a87417;
+  --key-grad: #a87417, #dcae52, #a87417;
   --key-off: #e3dabb;
   --shadow: 0 24px 60px -24px rgba(8, 50, 32, 0.35);
 }
@@ -71,6 +73,8 @@
   --btn-text: #1d1503;
   --header-bg: rgba(4, 19, 12, 0.85);
   --glow: rgba(24, 140, 88, 0.2);
+  --key: #d79a2e;
+  --key-grad: #d79a2e, #f8da8d, #d79a2e;
   --key-off: #3a3c1c;
   --shadow: 0 30px 70px -24px rgba(0, 0, 0, 0.8);
 }
@@ -208,7 +212,8 @@ h1 em, h2 em {
 /* The logo in two layers, so the lettering can deepen on light backgrounds */
 .brand-logo { --w: 232px; position: relative; flex: none; display: block; width: var(--w); aspect-ratio: 720 / 197; }
 .brand-logo img { position: absolute; inset: 0; width: 100%; height: 100%; }
-[data-theme="light"] .site-header.scrolled .brand-words, [data-theme="light"] .site-header.menu-open .brand-words { filter: brightness(0.5) saturate(1.15); }
+[data-theme="light"] .site-header.scrolled .brand-words, [data-theme="light"] .site-header.menu-open .brand-words { filter: brightness(0.43) saturate(1.7); }
+[data-theme="light"] .site-header.scrolled .brand-logo img:first-child, [data-theme="light"] .site-header.menu-open .brand-logo img:first-child { filter: brightness(0.82) saturate(1.35); }
 
 .nav-desktop { display: flex; align-items: center; gap: clamp(1rem, 1.7vw, 1.8rem); }
 .nav-link { position: relative; padding: 0.5rem 0; font-size: 0.9375rem; font-weight: 500; color: var(--text-2); transition: color 0.2s; }
@@ -508,13 +513,13 @@ button.zone[aria-pressed="true"] { background: linear-gradient(135deg, #d79a2e, 
 /* 11. Process: the key ----------------------------------------------------- */
 .process-section { background: var(--bg-alt); border-block: 1px solid var(--line); }
 /* Bow and bit are traced from the logo; 1 unit of the artwork = --u */
-.process { --p: 1; --key: #e0a32e; --u: 0.22px; }
+.process { --p: 1; --u: 0.22px; }
 .key-rail { display: flex; align-items: center; margin-bottom: 2.25rem; padding-bottom: calc(60 * var(--u)); }
 .key-bow { flex: none; width: calc(372 * var(--u)); margin-left: calc(-62 * var(--u)); fill: var(--key); }
 .key-bit { flex: none; width: calc(326 * var(--u)); margin-left: -1px; fill: var(--key-off); transition: fill 0.5s; overflow: visible; }
 .process.unlocked .key-bit { fill: var(--key); }
 .key-shaft { flex: 1; height: calc(62 * var(--u)); margin-left: calc(-6 * var(--u)); position: relative; background: var(--key-off); }
-.key-fill { position: absolute; inset: 0; background: var(--key); transform-origin: 0 0; transform: scaleX(var(--p)); }
+.key-fill { position: absolute; inset: 0; background: linear-gradient(90deg, var(--key-grad)); clip-path: inset(0 calc(100% - var(--p) * 100%) 0 0); }
 .process-steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(1.25rem, 2.5vw, 2.5rem); }
 .process-num { display: block; font-family: var(--font-display); font-style: italic; font-size: 2.25rem; line-height: 1; color: var(--gold); }
 .process-title { font-size: clamp(1.3rem, 1.1rem + 0.6vw, 1.6rem); margin-top: 0.8rem; }
@@ -524,7 +529,7 @@ button.zone[aria-pressed="true"] { background: linear-gradient(135deg, #d79a2e, 
   .key-rail { flex-direction: column; margin: 0; padding: 0; }
   .key-bow { margin: 0; transform: translateX(calc(-32 * var(--u))); }
   .key-shaft { width: calc(62 * var(--u)); height: auto; margin: calc(-40 * var(--u)) 0 0; }
-  .key-fill { transform: scaleY(var(--p)); }
+  .key-fill { background: linear-gradient(var(--key-grad)); clip-path: inset(0 0 calc(100% - var(--p) * 100%) 0); }
   .key-bit { margin: -1px 0 0; transform: rotate(90deg); }
   .process-steps { grid-template-columns: minmax(0, 1fr); gap: 2.5rem; padding-block: 0.5rem 0.75rem; }
   .process-num { font-size: 1.75rem; }
